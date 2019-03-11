@@ -1,0 +1,20 @@
+ - 插件前言
+    - 有10颗星 10个fork我就来写详细系统说明
+ - 功能说明
+    - php version >=7.0
+    - 一个代码编辑生成器 （以内置部分模板  如 spring mvc的代码生成模板，部分php的代码生成模板 可根据需求改改模板）   
+ - 使用方式见demo.php
+ - template vars   模板当中常用的部分变量 及说明
+    - $table  tablename
+    - $table_raw raw table name
+    - $Table ufirst letter
+    - $utable no char '_'
+    - $Utable   ucfirse  && no char '_'
+    - $tableName   camelize
+    - $TableName   camelize
+    - table_abbr 小写缩写
+    - $cols[0]['col_name_raw'] raw name
+    - $cols[0]['comment'] raw name
+    - $cols[0]['colName'] camelize
+    - $cols[0]['ColName'] Camelize
+    - $cols[0]['jtype']  java map type

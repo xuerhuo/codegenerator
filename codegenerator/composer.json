@@ -1,0 +1,18 @@
+{
+    "name": "xufan/codegenerator",
+    "description": "code maker",
+    "type": "library",
+    "authors": [
+        {
+            "name": "许繁",
+            "email": "i@erhuo.org"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Xufan\\": "src/"
+        }
+    }
+}

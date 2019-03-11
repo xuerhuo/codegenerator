@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xnft.dao.InventoryListMapper">
+
+
+<!--添加盘点结果清单数据-->
+<insert id="addInventoryList" parameterType="com.xnft.model.InventoryList">
+    insert into inventory_list      (`filecap_id`,`archive_no`,`crt_date`,`inventory_id`,`status`,`operator`,`box_bo`)values(
+      #{filecapId} , #{archiveNo} , #{crtDate} , #{inventoryId} , #{status} , #{operator} , #{boxBo})
+</insert>
+
+<!--删除盘点结果清单数据-->
+<delete id="delInventoryList" parameterType="com.xnft.model.InventoryList">
+  delete il from inventory_list il  where 1=1
+      <if test="id != null and id != ''">
+     and il.id = #{id}
+     </if>
+     <if test="filecapId != null and filecapId != ''">
+     and il.filecap_id = #{filecapId}
+     </if>
+     <if test="archiveNo != null and archiveNo != ''">
+     and il.archive_no = #{archiveNo}
+     </if>
+     <if test="crtDate != null and crtDate != ''">
+     and il.crt_date = #{crtDate}
+     </if>
+     <if test="inventoryId != null and inventoryId != ''">
+     and il.inventory_id = #{inventoryId}
+     </if>
+     <if test="status != null and status != ''">
+     and il.status = #{status}
+     </if>
+     <if test="operator != null and operator != ''">
+     and il.operator = #{operator}
+     </if>
+     <if test="boxBo != null and boxBo != ''">
+     and il.box_bo = #{boxBo}
+     </if>
+</delete>
+
+<!--修改盘点结果清单数据-->
+<update id="updateInventoryListById" parameterType="com.xnft.model.InventoryList">
+  update inventory_list il <trim prefix="set" suffixOverrides=",">
+      <if test="filecapId != null and filecapId !=''">
+            il.filecap_id = #{filecapId}
+      </if>
+      <if test="archiveNo != null and archiveNo !=''">
+            il.archive_no = #{archiveNo}
+      </if>
+      <if test="crtDate != null and crtDate !=''">
+            il.crt_date = #{crtDate}
+      </if>
+      <if test="inventoryId != null and inventoryId !=''">
+            il.inventory_id = #{inventoryId}
+      </if>
+      <if test="status != null and status !=''">
+            il.status = #{status}
+      </if>
+      <if test="operator != null and operator !=''">
+            il.operator = #{operator}
+      </if>
+      <if test="boxBo != null and boxBo !=''">
+            il.box_bo = #{boxBo}
+      </if>
+</trim>
+    where
+     il.id = #{id}
+</update>
+
+    <!--查找单条盘点结果清单数据-->
+  <select id="findInventoryList" resultType="com.xnft.model.InventoryList" parameterType="com.xnft.model.InventoryList">
+select
+     il.id as id , 
+      il.filecap_id as filecapId , 
+      il.archive_no as archiveNo , 
+      il.crt_date as crtDate , 
+      il.inventory_id as inventoryId , 
+      il.status as status , 
+      il.operator as operator , 
+      il.box_bo as boxBo
+   from inventory_list il  where 1=1
+      <if test="id != null and id != ''">
+     and il.id = #{id}
+     </if>
+      <if test="filecapId != null and filecapId != ''">
+     and il.filecap_id = #{filecapId}
+     </if>
+      <if test="archiveNo != null and archiveNo != ''">
+     and il.archive_no = #{archiveNo}
+     </if>
+      <if test="crtDate != null and crtDate != ''">
+     and il.crt_date = #{crtDate}
+     </if>
+      <if test="inventoryId != null and inventoryId != ''">
+     and il.inventory_id = #{inventoryId}
+     </if>
+      <if test="status != null and status != ''">
+     and il.status = #{status}
+     </if>
+      <if test="operator != null and operator != ''">
+     and il.operator = #{operator}
+     </if>
+      <if test="boxBo != null and boxBo != ''">
+     and il.box_bo = #{boxBo}
+     </if>
+ </select>
+
+
+<select id="queryInventoryList" resultType="com.xnft.model.InventoryList" parameterType="com.xnft.model.InventoryList">
+select
+     il.id as id , 
+     il.filecap_id as filecapId , 
+     il.archive_no as archiveNo , 
+     il.crt_date as crtDate , 
+     il.inventory_id as inventoryId , 
+     il.status as status , 
+     il.operator as operator , 
+     il.box_bo as boxBo
+ 
+ from inventory_list il  where 1=1
+      <if test="id != null and id != ''">
+     and il.id = #{id}
+     </if>
+      <if test="filecapId != null and filecapId != ''">
+     and il.filecap_id = #{filecapId}
+     </if>
+      <if test="archiveNo != null and archiveNo != ''">
+     and il.archive_no = #{archiveNo}
+     </if>
+      <if test="crtDate != null and crtDate != ''">
+     and il.crt_date = #{crtDate}
+     </if>
+      <if test="inventoryId != null and inventoryId != ''">
+     and il.inventory_id = #{inventoryId}
+     </if>
+      <if test="status != null and status != ''">
+     and il.status = #{status}
+     </if>
+      <if test="operator != null and operator != ''">
+     and il.operator = #{operator}
+     </if>
+      <if test="boxBo != null and boxBo != ''">
+     and il.box_bo = #{boxBo}
+     </if>
+  limit #{Offset},#{pageSize}
+  </select>
+<select id="queryInventoryListAll" resultType="com.xnft.model.InventoryList" parameterType="com.xnft.model.InventoryList">
+select
+     il.id as id , 
+     il.filecap_id as filecapId , 
+     il.archive_no as archiveNo , 
+     il.crt_date as crtDate , 
+     il.inventory_id as inventoryId , 
+     il.status as status , 
+     il.operator as operator , 
+     il.box_bo as boxBo
+ 
+ from inventory_list il  where 1=1
+      <if test="id != null and id != ''">
+     and il.id = #{id}
+     </if>
+      <if test="filecapId != null and filecapId != ''">
+     and il.filecap_id = #{filecapId}
+     </if>
+      <if test="archiveNo != null and archiveNo != ''">
+     and il.archive_no = #{archiveNo}
+     </if>
+      <if test="crtDate != null and crtDate != ''">
+     and il.crt_date = #{crtDate}
+     </if>
+      <if test="inventoryId != null and inventoryId != ''">
+     and il.inventory_id = #{inventoryId}
+     </if>
+      <if test="status != null and status != ''">
+     and il.status = #{status}
+     </if>
+      <if test="operator != null and operator != ''">
+     and il.operator = #{operator}
+     </if>
+      <if test="boxBo != null and boxBo != ''">
+     and il.box_bo = #{boxBo}
+     </if>
+   </select>
+
+<select id="queryInventoryListCount" resultType="java.lang.Integer" parameterType="com.xnft.model.InventoryList">
+select
+ count(1)
+ from inventory_list il  where 1=1
+      <if test="id != null and id != ''">
+     and il.id = #{id}
+     </if>
+      <if test="filecapId != null and filecapId != ''">
+     and il.filecap_id = #{filecapId}
+     </if>
+      <if test="archiveNo != null and archiveNo != ''">
+     and il.archive_no = #{archiveNo}
+     </if>
+      <if test="crtDate != null and crtDate != ''">
+     and il.crt_date = #{crtDate}
+     </if>
+      <if test="inventoryId != null and inventoryId != ''">
+     and il.inventory_id = #{inventoryId}
+     </if>
+      <if test="status != null and status != ''">
+     and il.status = #{status}
+     </if>
+      <if test="operator != null and operator != ''">
+     and il.operator = #{operator}
+     </if>
+      <if test="boxBo != null and boxBo != ''">
+     and il.box_bo = #{boxBo}
+     </if>
+  </select>
+
+</mapper>
